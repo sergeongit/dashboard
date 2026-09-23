@@ -1,0 +1,159 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "serialNumber": 1234,
+      "isNew": 1,
+      "photo": "/images/no-image.svg",
+      "title": "Product 1",
+      "type": "Monitors",
+      "specification": "Specification 1",
+      "guarantee": {
+        "start": "2017-06-29 12:09:33",
+        "end": "2017-06-29 12:09:33"
+      },
+      "price": [
+        {
+          "value": 100,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 2600,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 1,
+      "date": "2017-06-29 12:09:33"
+    },
+    {
+      "id": 2,
+      "serialNumber": 2345,
+      "isNew": 0,
+      "photo": "/images/no-image.svg",
+      "title": "Product 2",
+      "type": "Keyboards",
+      "specification": "Specification 2",
+      "guarantee": {
+        "start": "2018-07-14 09:45:10",
+        "end": "2020-07-14 09:45:10"
+      },
+      "price": [
+        {
+          "value": 80,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 2100,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 1,
+      "date": "2018-07-14 09:45:10"
+    },
+    {
+      "id": 3,
+      "serialNumber": 3456,
+      "isNew": 1,
+      "photo": "/images/no-image.svg",
+      "title": "Product 3",
+      "type": "Monitors",
+      "specification": "Specification 3",
+      "guarantee": {
+        "start": "2020-01-10 08:00:00",
+        "end": "2022-01-10 08:00:00"
+      },
+      "price": [
+        {
+          "value": 210,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 5800,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 2,
+      "date": "2020-01-10 08:00:00"
+    },
+    {
+      "id": 4,
+      "serialNumber": 4567,
+      "isNew": 0,
+      "photo": "/images/no-image.svg",
+      "title": "Product 4",
+      "type": "Mice",
+      "specification": "Specification 4",
+      "guarantee": {
+        "start": "2021-09-05 13:30:00",
+        "end": "2023-09-05 13:30:00"
+      },
+      "price": [
+        {
+          "value": 60,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 1600,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 2,
+      "date": "2021-09-05 13:30:00"
+    },
+    {
+      "id": 5,
+      "serialNumber": 5678,
+      "isNew": 1,
+      "photo": "/images/no-image.svg",
+      "title": "Product 5",
+      "type": "Headsets",
+      "specification": "Specification 5",
+      "guarantee": {
+        "start": "2023-11-19 11:15:00",
+        "end": "2025-11-19 11:15:00"
+      },
+      "price": [
+        {
+          "value": 140,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 3700,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 3,
+      "date": "2023-11-19 11:15:00"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "title": "Order 1",
+      "date": "2017-06-29 12:09:33",
+      "description": "equipment for office"
+    },
+    {
+      "id": 2,
+      "title": "Order 2",
+      "date": "2017-06-29 11:09:21",
+      "description": "equipment for office"
+    },
+    {
+      "id": 3,
+      "title": "Order 3",
+      "date": "2023-11-19 11:15:00",
+      "description": "Additional inventory"
+    }
+  ]
+}
