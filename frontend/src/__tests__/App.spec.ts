@@ -1,9 +1,9 @@
 import { describe, it, expect } from 'vitest'
 
 import { mount } from '@vue/test-utils'
-import { router } from '../router'
-import App from '../App.vue'
-import store from '../store'
+import { router } from '@/app/router'
+import App from '@/app/App.vue'
+import store from '@/app/store'
 
 describe('App', () => {
   it('renders dashboard navigation and layout shell', async () => {

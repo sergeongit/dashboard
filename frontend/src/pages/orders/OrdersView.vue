@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import { useStore } from 'vuex'
-import DeleteOrderModal from '../components/DeleteOrderModal.vue'
-import OrderActions from '../components/OrderActions.vue'
-import type { Order } from '../types/orders'
-import type { RootState } from '../store/types'
+import DeleteOrderModal from '@/features/orders/delete-order/DeleteOrderModal.vue'
+import OrderActions from '@/features/orders/order-actions/OrderActions.vue'
+import type { Order } from '@/entities/order/model/types'
+import type { RootState } from '@/app/store/types'
 
 const store = useStore<RootState>()
 const orders = computed(() => store.state.orders.items)
@@ -145,12 +145,14 @@ onMounted(() => {
     </div>
     </div>
 
-    <DeleteOrderModal
-      v-if="deleteOrderId !== null"
-      :order-title="orders.find((order) => order.id === deleteOrderId)?.title"
-      @cancel="deleteOrderId = null"
-      @confirm="removeOrder"
-    />
+    <Transition name="modal" appear>
+      <DeleteOrderModal
+        v-if="deleteOrderId !== null"
+        :order-title="orders.find((order) => order.id === deleteOrderId)?.title"
+        @cancel="deleteOrderId = null"
+        @confirm="removeOrder"
+      />
+    </Transition>
   </div>
 </template>
 

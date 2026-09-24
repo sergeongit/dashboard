@@ -1,5 +1,5 @@
-import type { Order } from '../types/orders'
-import type { Product } from '../types/products'
+import type { Order } from '@/entities/order/model/types'
+import type { Product } from '@/entities/product/model/types'
 
 export interface OrdersState {
   items: Order[]

@@ -10,12 +10,12 @@ export const router = createRouter({
     {
       path: '/orders',
       name: 'orders',
-      component: () => import('../views/OrdersView.vue'),
+      component: () => import('@/pages/orders/OrdersView.vue'),
     },
     {
       path: '/products',
       name: 'products',
-      component: () => import('../views/ProductsView.vue'),
+      component: () => import('@/pages/products/ProductsView.vue'),
     },
   ],
 })

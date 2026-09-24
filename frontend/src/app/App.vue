@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import NavigationMenu from './components/NavigationMenu.vue'
-import TopMenu from './components/TopMenu.vue'
+import NavigationMenu from '@/widgets/navigation/NavigationMenu.vue'
+import TopMenu from '@/widgets/top-bar/TopMenu.vue'
 </script>
 
 <template>

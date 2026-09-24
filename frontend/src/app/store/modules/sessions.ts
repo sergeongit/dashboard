@@ -1,7 +1,7 @@
 import { io, type Socket } from 'socket.io-client'
 import type { ActionContext, Module } from 'vuex'
-import type { RootState, SessionsState } from '../types'
-import { SOCKET_URL } from '../../shared/config'
+import type { RootState, SessionsState } from '@/app/store/types'
+import { SOCKET_URL } from '@/shared/config'
 
 type SessionsContext = ActionContext<SessionsState, RootState>
 

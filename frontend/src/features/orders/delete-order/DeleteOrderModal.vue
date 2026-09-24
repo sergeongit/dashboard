@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import BaseButton from './BaseButton.vue'
+import BaseButton from '@/shared/ui/BaseButton.vue'
 
 defineProps<{
   orderTitle?: string
@@ -12,20 +12,18 @@ defineEmits<{
 </script>
 
 <template>
-  <Transition name="modal">
-    <div class="modal-backdrop d-flex align-items-center justify-content-center">
-      <div class="modal-card bg-white rounded shadow p-4">
-        <h4>Delete order?</h4>
-        <p class="mb-3">
-          {{ orderTitle ? `Delete ${orderTitle}? This action cannot be undone.` : 'This action will remove the selected order permanently.' }}
-        </p>
-        <div class="d-flex justify-content-end gap-2">
-          <BaseButton title="Cancel" variant="secondary" :outline="true" @click="$emit('cancel')" />
-          <BaseButton title="Delete" variant="danger" @click="$emit('confirm')" />
-        </div>
+  <div class="modal-backdrop d-flex align-items-center justify-content-center">
+    <div class="modal-card bg-white rounded shadow p-4">
+      <h4>Delete order?</h4>
+      <p class="mb-3">
+        {{ orderTitle ? `Delete ${orderTitle}? This action cannot be undone.` : 'This action will remove the selected order permanently.' }}
+      </p>
+      <div class="d-flex justify-content-end gap-2">
+        <BaseButton title="Cancel" variant="secondary" :outline="true" @click="$emit('cancel')" />
+        <BaseButton title="Delete" variant="danger" @click="$emit('confirm')" />
       </div>
     </div>
-  </Transition>
+  </div>
 </template>
 
 <style scoped>

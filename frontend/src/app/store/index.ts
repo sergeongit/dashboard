@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
-import orders from './modules/orders'
-import products from './modules/products'
-import sessions from './modules/sessions'
+import orders from '@/app/store/modules/orders'
+import products from '@/app/store/modules/products'
+import sessions from '@/app/store/modules/sessions'
 import type { RootState } from './types'
 
 export type { RootState } from './types'

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useStore } from 'vuex'
-import type { RootState } from '../store/types'
+import type { RootState } from '@/app/store/types'
 
 const now = ref(new Date())
 const store = useStore<RootState>()

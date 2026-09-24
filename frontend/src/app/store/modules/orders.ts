@@ -1,7 +1,7 @@
 import type { ActionContext, Module } from 'vuex'
-import type { Order } from '../../types/orders'
-import type { RootState, OrdersState } from '../types'
-import { API_URL } from '../../shared/config'
+import type { Order } from '@/entities/order/model/types'
+import type { RootState, OrdersState } from '@/app/store/types'
+import { API_URL } from '@/shared/config'
 
 type OrdersContext = ActionContext<OrdersState, RootState>
 

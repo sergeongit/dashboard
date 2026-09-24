@@ -1,7 +1,7 @@
 import type { ActionContext, Module } from 'vuex'
-import type { Product } from '../../types/products'
-import type { RootState, ProductsState } from '../types'
-import { API_URL } from '../../shared/config'
+import type { Product } from '@/entities/product/model/types'
+import type { RootState, ProductsState } from '@/app/store/types'
+import { API_URL } from '@/shared/config'
 
 type ProductsContext = ActionContext<ProductsState, RootState>
 
