@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
+import { useStore } from 'vuex'
 import DeleteOrderModal from '../components/DeleteOrderModal.vue'
 import OrderActions from '../components/OrderActions.vue'
 import type { Order } from '../types/orders'
+import type { RootState } from '../store/types'
 
-const orders = ref<Order[]>([])
+const store = useStore<RootState>()
+const orders = computed(() => store.state.orders.items)
 const selectedOrderId = ref<number | null>(null)
 const deleteOrderId = ref<number | null>(null)
-const loading = ref(true)
+const loading = computed(() => store.state.orders.loading)
 
 const selectedOrder = computed(() =>
   orders.value.find((order) => order.id === selectedOrderId.value) ?? null
@@ -34,31 +37,17 @@ const getOrderTotalUsd = (order: Order) =>
     0,
   )
 
-const fetchOrders = async () => {
-  try {
-    const response = await fetch('http://localhost:4000/api/orders')
-    const payload = await response.json() as Order[]
-    orders.value = payload
-  } catch (error) {
-    console.error('Failed to fetch orders', error)
-  } finally {
-    loading.value = false
-  }
-}
-
 const removeOrder = async () => {
   if (deleteOrderId.value === null) {
     return
   }
 
+  const orderId = deleteOrderId.value
+
   try {
-    await fetch(`http://localhost:4000/api/orders/${deleteOrderId.value}`, {
-      method: 'DELETE',
-    })
+    await store.dispatch('orders/remove', orderId)
 
-    orders.value = orders.value.filter((order) => order.id !== deleteOrderId.value)
-
-    if (selectedOrderId.value === deleteOrderId.value) {
+    if (selectedOrderId.value === orderId) {
       selectedOrderId.value = null
     }
   } catch (error) {
@@ -81,7 +70,7 @@ const formatDateUs = (value: string) =>
   })
 
 onMounted(() => {
-  fetchOrders()
+  store.dispatch('orders/fetch')
 })
 </script>
 

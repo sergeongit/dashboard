@@ -1,25 +1,20 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
-import { io } from 'socket.io-client'
+import { useStore } from 'vuex'
+import type { RootState } from '../store/types'
 
 const now = ref(new Date())
-const activeSessions = ref(1)
+const store = useStore<RootState>()
+const activeSessions = computed(() => store.state.sessions.activeCount)
 
 let timerId: ReturnType<typeof setInterval> | undefined
-let socketClient: ReturnType<typeof io> | undefined
 
 onMounted(() => {
   timerId = setInterval(() => {
     now.value = new Date()
   }, 1000)
 
-  socketClient = io('http://localhost:4000', {
-    transports: ['websocket'],
-  })
-
-  socketClient.on('session_count', (count: number) => {
-    activeSessions.value = count
-  })
+  store.dispatch('sessions/connect')
 })
 
 onBeforeUnmount(() => {
@@ -27,9 +22,7 @@ onBeforeUnmount(() => {
     clearInterval(timerId)
   }
 
-  if (socketClient) {
-    socketClient.disconnect()
-  }
+  store.dispatch('sessions/disconnect')
 })
 
 const formattedDate = computed(() =>
@@ -61,7 +54,7 @@ const formattedTime = computed(() =>
       </div>
       <div class="badge-session d-flex align-items-center gap-2 px-3 py-2 rounded-pill">
         <span class="session-dot"></span>
-        <span>{{ activeSessions }} active sessions</span>
+        <span>{{ activeSessions }} active session{{ activeSessions === 1 ? '' : 's' }}</span>
       </div>
     </div>
   </header>

@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
-import type { Product } from '../types/products'
+import { useStore } from 'vuex'
+import type { RootState } from '../store/types'
 
-const products = ref<Product[]>([])
+const store = useStore<RootState>()
+const products = computed(() => store.state.products.items)
 const selectedType = ref('All')
-const loading = ref(true)
+const loading = computed(() => store.state.products.loading)
 
 const productTypes = computed(() => ['All', ...new Set(products.value.map((product) => product.type))])
 
@@ -16,21 +18,10 @@ const filteredProducts = computed(() => {
   return products.value.filter((product) => product.type === selectedType.value)
 })
 
-const fetchProducts = async () => {
-  try {
-    const response = await fetch('http://localhost:4000/api/products')
-    products.value = await response.json() as Product[]
-  } catch (error) {
-    console.error('Failed to fetch products', error)
-  } finally {
-    loading.value = false
-  }
-}
-
 const formatDate = (value: string) => new Date(value).toLocaleString()
 
 onMounted(() => {
-  fetchProducts()
+  store.dispatch('products/fetch')
 })
 </script>
 
@@ -44,6 +35,9 @@ onMounted(() => {
     </div>
 
     <div v-if="loading" class="text-muted">Loading products...</div>
+    <div v-else-if="filteredProducts.length === 0" class="empty-state">
+      No products available.
+    </div>
 
     <div v-else class="table-responsive">
       <table class="table table-striped table-bordered align-middle">
@@ -88,6 +82,13 @@ onMounted(() => {
 <style scoped>
 .table {
   background: #fff;
+}
+
+.empty-state {
+  padding: 2rem;
+  border: 1px dashed #dee2e6;
+  border-radius: 0.75rem;
+  color: #6c757d;
 }
 
 .product-thumb {
