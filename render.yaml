@@ -10,10 +10,6 @@ services:
         value: https://dashboard-frontend.onrender.com
       - key: DATABASE_PATH
         value: /var/data/db.json
-    disk:
-      name: dashboard-data
-      mountPath: /var/data
-      sizeGB: 1
 
   - type: web
     name: dashboard-frontend
