@@ -10,7 +10,7 @@ services:
       - key: FRONTEND_ORIGIN
         value: https://dashboard-frontend-bdyj.onrender.com
       - key: DATABASE_PATH
-        value: /var/data/db.json
+        value: /app/db.json
 
   - type: web
     name: dashboard-frontend
