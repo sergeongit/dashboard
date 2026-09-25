@@ -9,8 +9,7 @@ services:
     ports:
       - "4000:4000"
     volumes:
-      - dashboard-data:/data
-      - ./backend/db.json:/data/db.json
+      - ./backend:/data
     healthcheck:
       test: ["CMD", "node", "-e", "fetch('http://localhost:4000/api/health').then((response) => process.exit(response.ok ? 0 : 1)).catch(() => process.exit(1))"]
       interval: 10s
@@ -27,6 +26,3 @@ services:
         condition: service_healthy
     ports:
       - "8080:80"
-
-volumes:
-  dashboard-data:
