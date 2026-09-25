@@ -8,7 +8,7 @@ services:
     healthCheckPath: /api/health
     envVars:
       - key: FRONTEND_ORIGIN
-        value: https://dashboard-frontend.onrender.com
+        value: https://dashboard-frontend-bdyj.onrender.com
       - key: DATABASE_PATH
         value: /var/data/db.json
 
@@ -20,4 +20,4 @@ services:
     dockerContext: ./frontend
     envVars:
       - key: BACKEND_URL
-        value: https://dashboard-backend.onrender.com
+        value: https://dashboard-backend-jkws.onrender.com
