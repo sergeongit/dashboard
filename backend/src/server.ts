@@ -1,90 +1,48 @@
-import cors from 'cors'
-import express from 'express'
 import { createServer } from 'node:http'
-import { readFile, writeFile } from 'node:fs/promises'
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { Server } from 'socket.io'
+import { createApp } from './app.js'
+import { env } from './config/env.js'
+import { JsonFileRepository } from './infrastructure/database/json-file.repository.js'
+import { OrdersService } from './modules/orders/orders.service.js'
+import { registerSessionsGateway } from './modules/sessions/sessions.gateway.js'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const dbPath = path.resolve(__dirname, '../db.json')
-
-const app = express()
-const httpServer = createServer(app)
-const io = new Server(httpServer, {
+const io = new Server({
   cors: {
-    origin: 'http://localhost:5173',
+    origin: env.frontendOrigin,
     methods: ['GET', 'POST', 'DELETE'],
   },
 })
 
-const activeSockets = new Set<string>()
+const repository = new JsonFileRepository(env.databasePath)
+const ordersService = new OrdersService(repository, io)
+const app = createApp({
+  frontendOrigin: env.frontendOrigin,
+  ordersService,
+  repository,
+})
+const httpServer = createServer(app)
 
-app.use(cors({ origin: 'http://localhost:5173' }))
-app.use(express.json())
+io.attach(httpServer)
+registerSessionsGateway(io)
 
-app.get('/api/health', (_req, res) => {
-  res.json({ status: 'ok' })
+httpServer.listen(env.port, () => {
+  console.log(`Dashboard backend running on http://localhost:${env.port}`)
 })
 
-app.get('/api/products', async (_req, res) => {
-  const db = await readDatabase()
-  res.json(db.products)
+httpServer.on('error', (error) => {
+  console.error('HTTP server error', error)
+  process.exitCode = 1
 })
 
-app.get('/api/orders', async (_req, res) => {
-  const db = await readDatabase()
-  const orders = db.orders.map((order) => ({
-    ...order,
-    products: db.products.filter((product) => product.order === order.id),
-  }))
-
-  res.json(orders)
-})
-
-app.delete('/api/orders/:id', async (req, res) => {
-  const db = await readDatabase()
-  const orderId = Number(req.params.id)
-
-  const filteredOrders = db.orders.filter((order) => order.id !== orderId)
-
-  if (filteredOrders.length === db.orders.length) {
-    return res.status(404).json({ message: 'Order not found' })
-  }
-
-  db.orders = filteredOrders
-  await writeDatabase(db)
-
-  return res.json({ success: true, id: orderId })
-})
-
-async function readDatabase() {
-  const raw = await readFile(dbPath, 'utf-8')
-  return JSON.parse(raw) as {
-    products: Array<{ order: number }>
-    orders: Array<{ id: number }>
-  }
-}
-
-async function writeDatabase(data: {
-  products: Array<{ order: number }>
-  orders: Array<{ id: number }>
-}) {
-  await writeFile(dbPath, JSON.stringify(data, null, 2), 'utf-8')
-}
-
-io.on('connection', (socket) => {
-  activeSockets.add(socket.id)
-  io.emit('session_count', activeSockets.size)
-
-  socket.on('disconnect', () => {
-    activeSockets.delete(socket.id)
-    io.emit('session_count', activeSockets.size)
+for (const signal of ['SIGINT', 'SIGTERM'] as const) {
+  process.once(signal, () => {
+    console.log(`Received ${signal}, shutting down`)
+    io.close()
+    httpServer.close((error) => {
+      if (error) {
+        console.error('Failed to close HTTP server', error)
+        process.exitCode = 1
+      }
+    })
   })
-})
-
-const PORT = 4000
-httpServer.listen(PORT, () => {
-  console.log(`Dashboard backend running on http://localhost:${PORT}`)
-})
+}

@@ -107,33 +107,6 @@
       ],
       "order": 2,
       "date": "2021-09-05 13:30:00"
-    },
-    {
-      "id": 5,
-      "serialNumber": 5678,
-      "isNew": 1,
-      "photo": "/images/no-image.svg",
-      "title": "Product 5",
-      "type": "Headsets",
-      "specification": "Specification 5",
-      "guarantee": {
-        "start": "2023-11-19 11:15:00",
-        "end": "2025-11-19 11:15:00"
-      },
-      "price": [
-        {
-          "value": 140,
-          "symbol": "USD",
-          "isDefault": 0
-        },
-        {
-          "value": 3700,
-          "symbol": "UAH",
-          "isDefault": 1
-        }
-      ],
-      "order": 3,
-      "date": "2023-11-19 11:15:00"
     }
   ],
   "orders": [
@@ -148,12 +121,6 @@
       "title": "Order 2",
       "date": "2017-06-29 11:09:21",
       "description": "equipment for office"
-    },
-    {
-      "id": 3,
-      "title": "Order 3",
-      "date": "2023-11-19 11:15:00",
-      "description": "Additional inventory"
     }
   ]
 }
