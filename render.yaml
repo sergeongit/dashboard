@@ -2,6 +2,7 @@ services:
   - type: web
     name: dashboard-backend
     runtime: docker
+    plan: free
     dockerfilePath: ./backend/Dockerfile
     dockerContext: ./backend
     healthCheckPath: /api/health
@@ -14,6 +15,7 @@ services:
   - type: web
     name: dashboard-frontend
     runtime: docker
+    plan: free
     dockerfilePath: ./frontend/Dockerfile
     dockerContext: ./frontend
     envVars:
