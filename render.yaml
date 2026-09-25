@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: dashboard-backend
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    healthCheckPath: /api/health
+    envVars:
+      - key: FRONTEND_ORIGIN
+        value: https://dashboard-frontend.onrender.com
+      - key: DATABASE_PATH
+        value: /var/data/db.json
+    disk:
+      name: dashboard-data
+      mountPath: /var/data
+      sizeGB: 1
+
+  - type: web
+    name: dashboard-frontend
+    runtime: docker
+    dockerfilePath: ./frontend/Dockerfile
+    dockerContext: ./frontend
+    envVars:
+      - key: BACKEND_URL
+        value: https://dashboard-backend.onrender.com

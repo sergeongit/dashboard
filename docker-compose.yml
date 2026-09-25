@@ -1,0 +1,32 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    environment:
+      PORT: 4000
+      FRONTEND_ORIGIN: http://localhost:8080
+      DATABASE_PATH: /data/db.json
+    ports:
+      - "4000:4000"
+    volumes:
+      - dashboard-data:/data
+      - ./backend/db.json:/data/db.json
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:4000/api/health').then((response) => process.exit(response.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  frontend:
+    build:
+      context: ./frontend
+    environment:
+      BACKEND_URL: http://backend:4000
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+
+volumes:
+  dashboard-data:
