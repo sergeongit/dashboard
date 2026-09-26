@@ -24,7 +24,7 @@ Build and start the frontend and backend:
 docker compose up --build
 ```
 
-Open the [frontend](http://localhost:8080). The backend is available at `http://localhost:4000`. Database state is stored in `backend/db.json` and persists across container restarts. To stop the services, run `docker compose down`.
+Open the frontend at `http://localhost:8080`. The backend is available at `http://localhost:4000`. Database state is stored in `backend/db.json` and persists across container restarts. To stop the services, run `docker compose down`.
 
 ## Features
 
