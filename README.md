@@ -36,7 +36,7 @@ Open the [frontend](http://localhost:8080). The backend is available at `http://
 
 ## Tech Stack
 
-- Frontend: Vue 3, TypeScript, Vue Router, and Vuex.
+- Frontend: Vue 3, TypeScript, Vue Router, Vuex, Bootstrap 5, and scoped CSS.
 - Backend: Node.js, TypeScript, and an Express REST API.
 - Active connection count updates: Socket.IO.
 - Data storage: the `backend/db.json` JSON file.
