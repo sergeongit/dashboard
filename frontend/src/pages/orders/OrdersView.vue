@@ -82,8 +82,8 @@ onMounted(() => {
         <h2>Orders</h2>
       </div>
 
-      <div v-if="loading" class="empty-state">Loading orders...</div>
-      <div v-else-if="orders.length === 0" class="empty-state">No orders available.</div>
+      <div v-if="loading" class="empty-state text-muted border border-secondary-subtle">Loading orders...</div>
+      <div v-else-if="orders.length === 0" class="empty-state text-muted border border-secondary-subtle">No orders available.</div>
 
       <!-- Orders list -->
       <div v-else>
@@ -99,20 +99,20 @@ onMounted(() => {
           <div
             v-for="order in orders"
             :key="order.id"
-            class="order-row"
+            class="order-row border rounded-3 bg-white px-3"
             :class="{ active: selectedOrderId === order.id }"
           >
-            <div class="order-title">
-              <strong>{{ order.title }}</strong>
+            <div class="order-title text-truncate">
+              <strong class="d-block text-truncate">{{ order.title }}</strong>
             </div>
-            <div class="order-products">{{ getProductCount(order)}} {{ getProductCount(order) > 1 ? 'items' : 'item' }}</div>
+            <div class="order-products text-truncate">{{ getProductCount(order)}} {{ getProductCount(order) > 1 ? 'items' : 'item' }}</div>
             <div class="order-date">
-              <div class="small text-muted">{{ formatDateUs(order.date) }}</div>
-              <div>{{ formatDateEu(order.date) }}</div>
+              <div class="small text-muted text-truncate">{{ formatDateUs(order.date) }}</div>
+              <div class="text-truncate">{{ formatDateEu(order.date) }}</div>
             </div>
             <div class="order-total">
-              <div class="small text-muted">{{ getOrderTotalUsd(order) }} USD</div>
-              <div>{{ getOrderTotal(order) }} UAH</div>
+              <div class="small text-muted text-truncate">{{ getOrderTotalUsd(order) }} USD</div>
+              <div class="text-truncate">{{ getOrderTotal(order) }} UAH</div>
             </div>
             <OrderActions
               @view="selectedOrderId = order.id"
@@ -125,7 +125,7 @@ onMounted(() => {
 
       <div class="details-slot" :class="{ 'has-details': selectedOrder }">
         <Transition name="details" appear>
-          <aside v-if="selectedOrder" class="details-panel p-3">
+          <aside v-if="selectedOrder" class="details-panel p-3 bg-light border">
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h3>{{ selectedOrder.title }}</h3>
             <button type="button" class="btn-close" aria-label="Close" @click="selectedOrderId = null"></button>
@@ -167,19 +167,16 @@ onMounted(() => {
 
 .order-row {
   display: grid;
-  grid-template-columns: minmax(180px, 1.5fr) minmax(70px, 0.5fr) minmax(170px, 1fr) minmax(130px, 0.8fr) minmax(112px, auto);
+  grid-template-columns: minmax(0, 1.5fr) minmax(70px, 0.5fr) minmax(170px, 1fr) minmax(130px, 0.8fr) minmax(112px, auto);
   align-items: center;
   gap: 1rem;
   width: 100%;
-  padding: 0.85rem 1rem;
-  border: 1px solid #e9ecef;
-  border-radius: 0.5rem;
-  background: #fff;
+  padding-block: 0.85rem;
 }
 
 .order-list-header {
   display: grid;
-  grid-template-columns: minmax(180px, 1.5fr) minmax(70px, 0.5fr) minmax(170px, 1fr) minmax(130px, 0.8fr) minmax(112px, auto);
+  grid-template-columns: minmax(0, 1.5fr) minmax(70px, 0.5fr) minmax(170px, 1fr) minmax(130px, 0.8fr) minmax(112px, auto);
   gap: 1rem;
   align-items: center;
   padding: 0 1rem 0.5rem;
@@ -195,34 +192,13 @@ onMounted(() => {
   box-shadow: 0 0 0 0.1rem rgba(13, 110, 253, 0.2);
 }
 
-@media (max-width: 768px) {
-  .order-list-header {
-    grid-template-columns: 1fr 1fr;
-  }
+.order-title {
+  min-width: 0;
+  overflow: hidden;
+}
 
-  .order-list-header > div:nth-child(1),
-  .order-list-header > div:nth-child(3),
-  .order-list-header > div:nth-child(4) {
-    grid-column: span 2;
-  }
-
-  .order-list-header-actions {
-    display: none;
-  }
-
-  .order-row {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .order-title,
-  .order-date,
-  .order-total {
-    grid-column: span 2;
-  }
-
-  :deep(.order-actions) {
-    grid-column: span 2;
-  }
+.order-row > * {
+  min-width: 0;
 }
 
 .details-slot {
@@ -242,8 +218,6 @@ onMounted(() => {
   flex: 0 0 380px;
   width: 380px;
   margin-top: 88px;
-  background: #f8f9fa;
-  border: 1px solid #e9ecef;
   border-radius: 0.75rem;
 }
 
@@ -271,27 +245,9 @@ onMounted(() => {
   }
 }
 
-@media (max-width: 768px) {
-  .details-slot {
-    width: 0;
-    margin-left: 0;
-    transition: none;
-  }
-
-  .details-slot.has-details {
-    width: 100%;
-  }
-
-  .details-panel {
-    flex: 0 0 auto;
-    width: 100%;
-  }
-}
-
 .empty-state {
   padding: 2rem;
-  border: 1px dashed #dee2e6;
   border-radius: 0.75rem;
-  color: #6c757d;
+  --bs-border-style: dashed;
 }
 </style>
