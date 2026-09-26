@@ -6,6 +6,18 @@ import { SOCKET_URL } from '@/shared/config'
 type SessionsContext = ActionContext<SessionsState, RootState>
 
 let socketClient: Socket | undefined
+const SESSION_ID_KEY = 'dashboard.sessionId'
+
+function getSessionId() {
+  let sessionId = sessionStorage.getItem(SESSION_ID_KEY)
+
+  if (!sessionId) {
+    sessionId = crypto.randomUUID()
+    sessionStorage.setItem(SESSION_ID_KEY, sessionId)
+  }
+
+  return sessionId
+}
 
 const sessionsModule: Module<SessionsState, RootState> = {
   namespaced: true,
@@ -23,7 +35,10 @@ const sessionsModule: Module<SessionsState, RootState> = {
         return
       }
 
-      socketClient = io(SOCKET_URL, { transports: ['websocket'] })
+      socketClient = io(SOCKET_URL, {
+        transports: ['websocket'],
+        auth: { sessionId: getSessionId() },
+      })
       socketClient.on('session_count', (count: number) => {
         commit('setActiveCount', count)
       })

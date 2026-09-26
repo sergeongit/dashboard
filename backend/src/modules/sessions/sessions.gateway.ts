@@ -1,15 +1,23 @@
 import type { Server } from 'socket.io'
 
 export function registerSessionsGateway(io: Server) {
-  const activeSockets = new Set<string>()
+  const activeSessions = new Map<string, string>()
 
   io.on('connection', (socket) => {
-    activeSockets.add(socket.id)
-    io.emit('session_count', activeSockets.size)
+    const requestedSessionId = socket.handshake.auth.sessionId
+    const sessionId =
+      typeof requestedSessionId === 'string' && requestedSessionId.length > 0
+        ? requestedSessionId
+        : socket.id
+
+    activeSessions.set(sessionId, socket.id)
+    io.emit('session_count', activeSessions.size)
 
     socket.on('disconnect', () => {
-      activeSockets.delete(socket.id)
-      io.emit('session_count', activeSockets.size)
+      if (activeSessions.get(sessionId) === socket.id) {
+        activeSessions.delete(sessionId)
+        io.emit('session_count', activeSessions.size)
+      }
     })
   })
 }

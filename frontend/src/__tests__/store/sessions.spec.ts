@@ -69,6 +69,29 @@ describe('sessions store module', () => {
     expect(store.state.sessions.activeCount).toBe(12)
   })
 
+  it('reuses the browser tab session id after reconnecting', async () => {
+    const firstStore = await createTestStore()
+    const { io } = await import('socket.io-client')
+
+    firstStore.dispatch('sessions/connect')
+    const firstAuth = vi.mocked(io).mock.calls[0]?.[1]?.auth as
+      | { sessionId?: string }
+      | undefined
+    const firstSessionId = firstAuth?.sessionId
+
+    firstStore.dispatch('sessions/disconnect')
+
+    const secondStore = await createTestStore()
+    secondStore.dispatch('sessions/connect')
+    const secondAuth = vi.mocked(io).mock.calls[1]?.[1]?.auth as
+      | { sessionId?: string }
+      | undefined
+    const secondSessionId = secondAuth?.sessionId
+
+    expect(firstSessionId).toEqual(expect.any(String))
+    expect(secondSessionId).toBe(firstSessionId)
+  })
+
   it('disconnect closes socket connection', async () => {
     const store = await createTestStore()
 

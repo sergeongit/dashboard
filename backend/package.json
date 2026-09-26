@@ -7,7 +7,7 @@
     "dev": "tsx watch src/server.ts",
     "start": "tsx src/server.ts",
     "build": "tsc --noEmit",
-    "test": "echo \"No backend tests configured\""
+    "test": "tsx --test src/modules/sessions/sessions.gateway.test.ts"
   },
   "keywords": [],
   "author": "",
