@@ -250,6 +250,5 @@ onMounted(() => {
 .empty-state {
   padding: 2rem;
   border-radius: 0.75rem;
-  --bs-border-style: dashed;
 }
 </style>
