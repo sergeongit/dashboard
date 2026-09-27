@@ -205,7 +205,7 @@ onMounted(() => {
   flex: 0 0 auto;
   width: 0;
   margin-left: 0;
-  overflow: hidden;
+  overflow: clip;
   transition: width 0.25s ease, margin-left 0.25s ease;
 }
 
@@ -215,6 +215,8 @@ onMounted(() => {
 }
 
 .details-panel {
+  position: sticky;
+  top: 1rem;
   flex: 0 0 380px;
   width: 380px;
   margin-top: 88px;
