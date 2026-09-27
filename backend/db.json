@@ -107,6 +107,438 @@
       ],
       "order": 2,
       "date": "2021-09-05 13:30:00"
+    },
+    {
+      "id": 5,
+      "serialNumber": 5678,
+      "isNew": 1,
+      "photo": "/images/no-image.svg",
+      "title": "Product 5",
+      "type": "Headphones",
+      "specification": "Specification 5",
+      "guarantee": {
+        "start": "2022-02-18 10:15:00",
+        "end": "2024-02-18 10:15:00"
+      },
+      "price": [
+        {
+          "value": 120,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 3200,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 3,
+      "date": "2022-02-18 10:15:00"
+    },
+    {
+      "id": 6,
+      "serialNumber": 6789,
+      "isNew": 0,
+      "photo": "/images/no-image.svg",
+      "title": "Product 6",
+      "type": "Webcams",
+      "specification": "Specification 6",
+      "guarantee": {
+        "start": "2022-05-22 14:20:00",
+        "end": "2024-05-22 14:20:00"
+      },
+      "price": [
+        {
+          "value": 75,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 2000,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 3,
+      "date": "2022-05-22 14:20:00"
+    },
+    {
+      "id": 7,
+      "serialNumber": 7890,
+      "isNew": 1,
+      "photo": "/images/no-image.svg",
+      "title": "Product 7",
+      "type": "Monitors",
+      "specification": "Specification 7",
+      "guarantee": {
+        "start": "2022-08-03 09:10:00",
+        "end": "2025-08-03 09:10:00"
+      },
+      "price": [
+        {
+          "value": 280,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 7600,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 4,
+      "date": "2022-08-03 09:10:00"
+    },
+    {
+      "id": 8,
+      "serialNumber": 8901,
+      "isNew": 1,
+      "photo": "/images/no-image.svg",
+      "title": "Product 8",
+      "type": "Keyboards",
+      "specification": "Specification 8",
+      "guarantee": {
+        "start": "2022-11-16 16:45:00",
+        "end": "2024-11-16 16:45:00"
+      },
+      "price": [
+        {
+          "value": 95,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 2500,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 4,
+      "date": "2022-11-16 16:45:00"
+    },
+    {
+      "id": 9,
+      "serialNumber": 9012,
+      "isNew": 0,
+      "photo": "/images/no-image.svg",
+      "title": "Product 9",
+      "type": "Mice",
+      "specification": "Specification 9",
+      "guarantee": {
+        "start": "2023-01-27 11:05:00",
+        "end": "2025-01-27 11:05:00"
+      },
+      "price": [
+        {
+          "value": 55,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 1450,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 5,
+      "date": "2023-01-27 11:05:00"
+    },
+    {
+      "id": 10,
+      "serialNumber": 1023,
+      "isNew": 1,
+      "photo": "/images/no-image.svg",
+      "title": "Product 10",
+      "type": "Speakers",
+      "specification": "Specification 10",
+      "guarantee": {
+        "start": "2023-04-08 12:40:00",
+        "end": "2025-04-08 12:40:00"
+      },
+      "price": [
+        {
+          "value": 140,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 3700,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 5,
+      "date": "2023-04-08 12:40:00"
+    },
+    {
+      "id": 11,
+      "serialNumber": 1134,
+      "isNew": 1,
+      "photo": "/images/no-image.svg",
+      "title": "Product 11",
+      "type": "Docking Stations",
+      "specification": "Specification 11",
+      "guarantee": {
+        "start": "2023-06-19 08:25:00",
+        "end": "2026-06-19 08:25:00"
+      },
+      "price": [
+        {
+          "value": 180,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 4800,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 6,
+      "date": "2023-06-19 08:25:00"
+    },
+    {
+      "id": 12,
+      "serialNumber": 1245,
+      "isNew": 0,
+      "photo": "/images/no-image.svg",
+      "title": "Product 12",
+      "type": "Printers",
+      "specification": "Specification 12",
+      "guarantee": {
+        "start": "2023-09-30 15:00:00",
+        "end": "2025-09-30 15:00:00"
+      },
+      "price": [
+        {
+          "value": 230,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 6100,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 6,
+      "date": "2023-09-30 15:00:00"
+    },
+    {
+      "id": 13,
+      "serialNumber": 1356,
+      "isNew": 1,
+      "photo": "/images/no-image.svg",
+      "title": "Product 13",
+      "type": "Microphones",
+      "specification": "Specification 13",
+      "guarantee": {
+        "start": "2024-01-12 10:50:00",
+        "end": "2026-01-12 10:50:00"
+      },
+      "price": [
+        {
+          "value": 110,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 2950,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 7,
+      "date": "2024-01-12 10:50:00"
+    },
+    {
+      "id": 14,
+      "serialNumber": 1467,
+      "isNew": 1,
+      "photo": "/images/no-image.svg",
+      "title": "Product 14",
+      "type": "Monitors",
+      "specification": "Specification 14",
+      "guarantee": {
+        "start": "2024-03-24 13:15:00",
+        "end": "2027-03-24 13:15:00"
+      },
+      "price": [
+        {
+          "value": 340,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 9200,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 7,
+      "date": "2024-03-24 13:15:00"
+    },
+    {
+      "id": 15,
+      "serialNumber": 1578,
+      "isNew": 0,
+      "photo": "/images/no-image.svg",
+      "title": "Product 15",
+      "type": "Keyboards",
+      "specification": "Specification 15",
+      "guarantee": {
+        "start": "2024-06-06 09:35:00",
+        "end": "2026-06-06 09:35:00"
+      },
+      "price": [
+        {
+          "value": 130,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 3450,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 8,
+      "date": "2024-06-06 09:35:00"
+    },
+    {
+      "id": 16,
+      "serialNumber": 1689,
+      "isNew": 1,
+      "photo": "/images/no-image.svg",
+      "title": "Product 16",
+      "type": "Mice",
+      "specification": "Specification 16",
+      "guarantee": {
+        "start": "2024-08-17 17:10:00",
+        "end": "2026-08-17 17:10:00"
+      },
+      "price": [
+        {
+          "value": 70,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 1850,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 8,
+      "date": "2024-08-17 17:10:00"
+    },
+    {
+      "id": 17,
+      "serialNumber": 1790,
+      "isNew": 1,
+      "photo": "/images/no-image.svg",
+      "title": "Product 17",
+      "type": "Webcams",
+      "specification": "Specification 17",
+      "guarantee": {
+        "start": "2024-10-29 14:05:00",
+        "end": "2027-10-29 14:05:00"
+      },
+      "price": [
+        {
+          "value": 160,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 4300,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 9,
+      "date": "2024-10-29 14:05:00"
+    },
+    {
+      "id": 18,
+      "serialNumber": 1801,
+      "isNew": 0,
+      "photo": "/images/no-image.svg",
+      "title": "Product 18",
+      "type": "Speakers",
+      "specification": "Specification 18",
+      "guarantee": {
+        "start": "2025-02-11 11:30:00",
+        "end": "2027-02-11 11:30:00"
+      },
+      "price": [
+        {
+          "value": 190,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 5100,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 9,
+      "date": "2025-02-11 11:30:00"
+    },
+    {
+      "id": 19,
+      "serialNumber": 1912,
+      "isNew": 1,
+      "photo": "/images/no-image.svg",
+      "title": "Product 19",
+      "type": "Docking Stations",
+      "specification": "Specification 19",
+      "guarantee": {
+        "start": "2025-05-23 16:20:00",
+        "end": "2028-05-23 16:20:00"
+      },
+      "price": [
+        {
+          "value": 260,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 7000,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 10,
+      "date": "2025-05-23 16:20:00"
+    },
+    {
+      "id": 20,
+      "serialNumber": 2023,
+      "isNew": 1,
+      "photo": "/images/no-image.svg",
+      "title": "Product 20",
+      "type": "Printers",
+      "specification": "Specification 20",
+      "guarantee": {
+        "start": "2025-09-07 10:00:00",
+        "end": "2027-09-07 10:00:00"
+      },
+      "price": [
+        {
+          "value": 310,
+          "symbol": "USD",
+          "isDefault": 0
+        },
+        {
+          "value": 8400,
+          "symbol": "UAH",
+          "isDefault": 1
+        }
+      ],
+      "order": 10,
+      "date": "2025-09-07 10:00:00"
     }
   ],
   "orders": [
@@ -121,6 +553,54 @@
       "title": "Order 2",
       "date": "2017-06-29 11:09:21",
       "description": "equipment for office"
+    },
+    {
+      "id": 3,
+      "title": "Order 3",
+      "date": "2022-02-18 10:15:00",
+      "description": "audio and video equipment"
+    },
+    {
+      "id": 4,
+      "title": "Order 4",
+      "date": "2022-08-03 09:10:00",
+      "description": "display equipment for meeting rooms"
+    },
+    {
+      "id": 5,
+      "title": "Order 5",
+      "date": "2023-01-27 11:05:00",
+      "description": "equipment for remote work"
+    },
+    {
+      "id": 6,
+      "title": "Order 6",
+      "date": "2023-06-19 08:25:00",
+      "description": "office printing equipment"
+    },
+    {
+      "id": 7,
+      "title": "Order 7",
+      "date": "2024-01-12 10:50:00",
+      "description": "equipment for the media room"
+    },
+    {
+      "id": 8,
+      "title": "Order 8",
+      "date": "2024-06-06 09:35:00",
+      "description": "new equipment for office desks"
+    },
+    {
+      "id": 9,
+      "title": "Order 9",
+      "date": "2024-10-29 14:05:00",
+      "description": "video conferencing equipment"
+    },
+    {
+      "id": 10,
+      "title": "Order 10",
+      "date": "2025-05-23 16:20:00",
+      "description": "equipment for a new workspace"
     }
   ]
 }
